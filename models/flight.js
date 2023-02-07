@@ -6,10 +6,11 @@ const destinationSchema = new Schema({
     airport: {
         type: String,
         enum: ['LAX', 'SFO', 'DEN', 'SAN', 'AUS', 'TPA', 'JFK'],
-    arrival: {
-        type: Date
     },
-}});
+    arrival: {
+        type: Date,
+    },
+});
 
 const flightSchema = new Schema({
   airline: {
