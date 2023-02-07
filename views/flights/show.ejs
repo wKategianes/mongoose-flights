@@ -1,22 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <title>Flights</title>
-</head>
-<body>
-    <section id="show-page">
-        <div>Airline: </div>
-        <div><%= Flights.airline %></div>
-        <div>Airport: </div>
-        <div><%= Flights.airport %></div>
-        <div>Flight Number: </div>
-        <div><%= Flights.flightNo %></div>
-        <div>Departing: </div>
-        <div><%= Flights.departs %></div>
-      </section>
-</body>
-</html>
+<%- include('../partials/header') %>
+
+<section>
+    <div>Airline:</div>
+    <div><%= flight.airline %></div>
+    <div>Airport:</div>
+    <div><%= flight.airport %></div>
+    <div>Flight Number:</div>
+    <div><%= flight.flightNo %></div>
+    <div>Departure:</div>
+    <div><%= flight.departs %></div>
+    <h3>Arrival Information</h3>
+    <% flight.destinations.forEach(function(f) { %>
+     <div><%= f.airline %></div>
+     <div><%= f.arrival %></div>
+    <% }); %>
+</section>
+
+<section>
+    <form id="add-arrival-form" method="POST"
+        action="/flights/<%= flight._id %>/destinations">
+        
+        <label>Airport:</label>
+        <select name="airport">
+            <option value="LAX">LAX</option>
+            <option value="SFO">SFO</option>
+            <option value="DEN">DEN</option>
+            <option value="SAN">SAN</option>
+            <option value="AUS">AUS</option>
+            <option value="TPA">TPA</option>
+            <option value="JFK">JFK</option>
+        </select>
+        <label>Arrival:</label>
+        <input type="datetime-local" name="arrival">
+        <input type="submit" value="Add Arrival"></input>
+    </form>
+</section>
+
+
+<%- include('../partials/footer') %>
