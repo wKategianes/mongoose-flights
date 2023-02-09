@@ -9,11 +9,23 @@
     <div><%= flight.flightNo %></div>
     <div>Departure:</div>
     <div><%= flight.departs %></div>
+
+    <% tickets.forEach(function(t) { %>
+    <div>Seat:</div>
+    <div><%= t.seat %></div>
+    <div>Price:</div>
+    <div>$<%= t.price %></div>
+    <form action="/tickets/<%= t.id %>?_method=DELETE" method="POST">
+        <button type="submit">X</button>
+     </form>
+    <% }); %>
+
     <h3>Arrival Information</h3>
     <% flight.destinations.forEach(function(f) { %>
      <div><%= f.airport %></div>
      <div><%= f.arrival %></div>
     <% }); %>
+    
 </section>
 
 <section>
@@ -36,5 +48,6 @@
     </form>
 </section>
 
+<a href="/flights/<%= flight._id %>/tickets/new"><button>Add Ticket</button></a>
 
 <%- include('../partials/footer') %>

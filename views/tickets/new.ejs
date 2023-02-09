@@ -1,0 +1,13 @@
+<h2>Add Ticket Information</h2>
+
+<form id="udpate-ticket-info" action="/flights/<%= flightId %>/tickets" method="POST">
+    <label>Seat:
+        <input type="text" name="seat" value="A9" required pattern="[A-F][1-9]\d?"></input>
+    </label>
+    <label>Price:
+        <input type="number" name="price" value="0" required></input>
+    </label>
+    <input type="submit" value="Add Ticket">
+</form>
+
+<%- include('../partials/footer') %>
